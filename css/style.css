@@ -1,0 +1,511 @@
+body {
+    background-color: #1c1c1e;
+    color: #f2f2f7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #0a84ff;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.task-form {
+    width: 950px;
+    margin: 0 auto;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2c2c2e;
+    color: #f2f2f7;
+}
+
+button {
+    padding: 10px;
+    background-color: #0a84ff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: #0077cc;
+}
+
+.task-timeline {
+    margin-top: 30px;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.task-item {
+    background-color: #2c2c2e;
+    padding: 20px;
+    border-radius: 6px;
+    width: 40%;
+    position: relative;
+    margin-bottom: 30px;
+    border: 1px solid #0a84ff;
+    transition: border-color 0.3s;
+}
+
+.task-item.complete {
+    border-color: green;
+}
+
+.task-item.impossible {
+    border-color: red;
+}
+
+.task-item:hover {
+    border-color: gold;
+}
+
+.task-item h3 {
+    color: #0a84ff;
+}
+
+.task-item img {
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 6px;
+}
+
+.task-item p {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.task-item.left {
+    left: 0;
+}
+
+.task-item.right {
+    left: 60%;
+}
+
+.task-item::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #0a84ff;
+    border-radius: 50%;
+    top: 10px;
+    left: -20px;
+}
+
+.day-label {
+    font-size: 1.2em;
+    color: #f2f2f7;
+    margin-bottom: 10px;
+    position: relative;
+    width: 40%;
+    padding-left: 10px;
+}
+
+.day-label.left {
+    left: 0;
+    text-align: left;
+}
+
+.day-label.right {
+    left: 60%;
+    text-align: left;
+}
+
+.task-timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #0a84ff 0,
+        #0a84ff 5px,
+        transparent 5px,
+        transparent 10px
+    );
+    top: 85px;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+    z-index: -1;
+    animation: flow 3s linear infinite;
+}
+
+@keyframes flow {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+.paste-box {
+    border: 2px dashed #0a84ff;
+    padding: 20px;
+    text-align: center;
+    background-color: #2c2c2e;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.paste-box p {
+    margin: 0;
+    color: #f2f2f7;
+}
+
+.paste-box img {
+    display: inline-block;
+    margin: 5px;
+}
+
+.preview-image {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+select {
+    padding: 5px;
+    background-color: #2c2c2e;
+    color: #f2f2f7;
+    border: 1px solid #0a84ff;
+    border-radius: 6px;
+    margin-top: 10px;
+    width: 100%;
+    appearance: none;
+    transition: border-color 0.3s;
+}
+
+select:focus {
+    outline: none;
+    border-color: #0077cc;
+}
+
+.apple-icon {
+    color: white;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.task-button {
+    display: inline-block;
+    width: 450px;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1c1c1e;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #2c2c2e;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.wide-input {
+    width: 935px;
+}
+
+.task-item .action-buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-item .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #0a84ff;
+    transition: background-color 0.3s ease;
+}
+
+.task-item .icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.icon-edit {
+    color: #0a84ff;
+}
+
+.icon-delete {
+    color: red;
+}
+
+.task-item input, .task-item tex// Import Firestore functions
+import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
+// Reference to Firestore collection
+const db = getFirestore();
+const tasksCollectionRef = collection(db, 'tasks');
+
+// Store tasks globally
+let tasks = [];
+let pastedImages = [];
+
+// Load tasks from Firestore on page load
+document.addEventListener('DOMContentLoaded', async function () {
+    const modal = document.getElementById('file-modal');
+    const mainContent = document.querySelector('main');
+
+    // Fetch tasks from Firestore
+    const querySnapshot = await getDocs(tasksCollectionRef);
+    querySnapshot.forEach(doc => {
+        tasks.push({ id: doc.id, ...doc.data() });
+    });
+
+    displayTasks(tasks);
+
+    // Hide modal and show main content after tasks are loaded
+    modal.style.display = 'none';
+    mainContent.style.display = 'block';
+});
+
+// Add paste event listener to the paste box
+document.getElementById('paste-box').addEventListener('paste', function (e) {
+    const items = e.clipboardData.items;
+    const pasteBox = document.getElementById('paste-box');
+
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf('image') !== -1) {
+            const blob = items[i].getAsFile();
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                pastedImages.push(event.target.result);
+
+                if (pasteBox.querySelector('p')) {
+                    pasteBox.querySelector('p').style.display = 'none';
+                }
+
+                const imgElement = document.createElement('img');
+                imgElement.src = event.target.result;
+                imgElement.alt = "Pasted Image";
+                imgElement.classList.add('preview-image');
+                pasteBox.appendChild(imgElement);
+            };
+
+            reader.readAsDataURL(blob);
+        }
+    }
+});
+
+// Display tasks
+function displayTasks(tasks) {
+    const taskList = document.getElementById('task-list');
+    taskList.innerHTML = '';
+
+    tasks.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    let currentDay = null;
+    let isLeft = true;
+
+    tasks.forEach((task, index) => {
+        const taskDate = new Date(task.date).toDateString();
+
+        if (taskDate !== currentDay) {
+            currentDay = taskDate;
+            isLeft = !isLeft;
+
+            const dayLabel = document.createElement('div');
+            dayLabel.classList.add('day-label', isLeft ? 'left' : 'right');
+            dayLabel.textContent = taskDate;
+            taskList.appendChild(dayLabel);
+        }
+
+        const taskItem = document.createElement('div');
+        taskItem.classList.add('task-item', isLeft ? 'left' : 'right');
+        
+        let statusColor = '#0a84ff';
+        if (task.status === 'complete') statusColor = 'green';
+        if (task.status === 'impossible') statusColor = 'red';
+
+        let imagesHtml = '';
+        if (task.images && task.images.length > 0) {
+            task.images.forEach(image => {
+                imagesHtml += `<img src="${image}" alt="Task Image" class="preview-image">`;
+            });
+        }
+
+        taskItem.style.borderColor = statusColor;
+        taskItem.innerHTML = `
+            <h3 style="color: ${statusColor};">${task.name}</h3>
+            <p>${task.description}</p>
+            ${imagesHtml}
+            <div class="action-buttons">
+                <select id="status-select-${index}" style="border-color: ${statusColor};" onchange="updateStatus(${index}, this.value)">
+                    <option value="inProgress" ${task.status === 'inProgress' ? 'selected' : ''}>In Progress</option>
+                    <option value="complete" ${task.status === 'complete' ? 'selected' : ''}>Complete</option>
+                    <option value="impossible" ${task.status === 'impossible' ? 'selected' : ''}>Impossible</option>
+                </select>
+                <button class="icon-btn icon-edit" onclick="editTask(${index})">&#9998;</button>
+                <button class="icon-btn icon-delete" onclick="deleteTask(${index})">&#128465;</button>
+            </div>
+        `;
+
+        taskList.appendChild(taskItem);
+    });
+}
+
+// Add new task
+document.getElementById('task-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const taskName = document.getElementById('task-name').value;
+    const taskDesc = document.getElementById('task-desc').value;
+
+    const newTask = {
+        name: taskName,
+        description: taskDesc,
+        images: pastedImages || [],
+        date: new Date().toLocaleString(),
+        status: 'inProgress'
+    };
+
+    const docRef = await addDoc(tasksCollectionRef, newTask);
+
+    tasks.push({ id: docRef.id, ...newTask });
+
+    displayTasks(tasks);
+
+    document.getElementById('task-form').reset();
+    document.getElementById('paste-box').innerHTML = '<p>Paste your image here</p>';
+    pastedImages = [];
+});
+
+// Update task status
+async function updateStatus(taskIndex, newStatus) {
+    tasks[taskIndex].status = newStatus;
+    const taskRef = doc(db, 'tasks', tasks[taskIndex].id);
+    await updateDoc(taskRef, { status: newStatus });
+    displayTasks(tasks);
+}
+
+// Edit task
+function editTask(index) {
+    const task = tasks[index];
+    const taskItem = document.querySelectorAll('.task-item')[index];
+
+    taskItem.innerHTML = `
+        <input type="text" id="edit-task-name-${index}" value="${task.name}" class="wide-input">
+        <textarea id="edit-task-desc-${index}" rows="4" class="wide-input">${task.description}</textarea>
+        <div class="action-buttons">
+            <select id="status-select-${index}" style="border-color: ${task.status === 'inProgress' ? '#0a84ff' : task.status === 'complete' ? 'green' : 'red'};" onchange="updateStatus(${index}, this.value)">
+                <option value="inProgress" ${task.status === 'inProgress' ? 'selected' : ''}>In Progress</option>
+                <option value="complete" ${task.status === 'complete' ? 'selected' : ''}>Complete</option>
+                <option value="impossible" ${task.status === 'impossible' ? 'selected' : ''}>Impossible</option>
+            </select>
+            <button class="icon-btn icon-edit" onclick="saveTask(${index})">&#10003;</button>
+            <button class="icon-btn icon-delete" onclick="deleteTask(${index})">&#128465;</button>
+        </div>
+        ${task.images && task.images.length > 0 ? task.images.map(image => `<img src="${image}" alt="Task Image" class="preview-image">`).join('') : ''}
+    `;
+}
+
+// Save edited task
+async function saveTask(index) {
+    const updatedName = document.getElementById(`edit-task-name-${index}`).value;
+    const updatedDesc = document.getElementById(`edit-task-desc-${index}`).value;
+
+    tasks[index].name = updatedName;
+    tasks[index].description = updatedDesc;
+
+    const taskRef = doc(db, 'tasks', tasks[index].id);
+    await updateDoc(taskRef, {
+        name: updatedName,
+        description: updatedDesc
+    });
+
+    displayTasks(tasks);
+}
+
+// Delete task
+async function deleteTask(index) {
+    const taskRef = doc(db, 'tasks', tasks[index].id);
+    await deleteDoc(taskRef);
+    tasks.splice(index, 1);
+    displayTasks(tasks);
+}
+tarea {
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #2c2c2e;
+    border: 1px solid #0a84ff;
+    color: #f2f2f7;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.task-item textarea {
+    resize: vertical;
+    height: 80px;
+}
