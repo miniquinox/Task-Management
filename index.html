@@ -48,11 +48,10 @@
 
     <!-- Firebase SDK -->
     <script type="module">
-        // Import Firebase SDKs
+        // Import the Firebase SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
-
-        // Firebase configuration
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+    
         const firebaseConfig = {
             apiKey: "AIzaSyC5xd72NZj54glH0nzoI9tJ_dPCaidLBqM",
             authDomain: "task-manager-2025.firebaseapp.com",
@@ -62,7 +61,7 @@
             appId: "1:1015096573035:web:35ed5a595b8bb4fef6452e",
             measurementId: "G-PJEP0EFSZ3"
         };
-
+    
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
