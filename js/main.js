@@ -1,9 +1,21 @@
-// Import Firestore functions
-import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+// Import Firebase SDKs
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
 
-// Reference to Firestore collection
-const db = getFirestore();
-const tasksCollectionRef = collection(db, 'tasks');
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyC5xd72NZj54glH0nzoI9tJ_dPCaidLBqM",
+    authDomain: "task-manager-2025.firebaseapp.com",
+    projectId: "task-manager-2025",
+    storageBucket: "task-manager-2025.appspot.com",
+    messagingSenderId: "1015096573035",
+    appId: "1:1015096573035:web:35ed5a595b8bb4fef6452e",
+    measurementId: "G-PJEP0EFSZ3"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 // Store tasks globally
 let tasks = [];
@@ -15,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const mainContent = document.querySelector('main');
 
     // Fetch tasks from Firestore
-    const querySnapshot = await getDocs(tasksCollectionRef);
+    const querySnapshot = await getDocs(collection(db, 'tasks'));
     querySnapshot.forEach(doc => {
         tasks.push({ id: doc.id, ...doc.data() });
     });
@@ -27,36 +39,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     mainContent.style.display = 'block';
 });
 
-// Add paste event listener to the paste box
-document.getElementById('paste-box').addEventListener('paste', function (e) {
-    const items = e.clipboardData.items;
-    const pasteBox = document.getElementById('paste-box');
-
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].type.indexOf('image') !== -1) {
-            const blob = items[i].getAsFile();
-            const reader = new FileReader();
-
-            reader.onload = function (event) {
-                pastedImages.push(event.target.result);
-
-                if (pasteBox.querySelector('p')) {
-                    pasteBox.querySelector('p').style.display = 'none';
-                }
-
-                const imgElement = document.createElement('img');
-                imgElement.src = event.target.result;
-                imgElement.alt = "Pasted Image";
-                imgElement.classList.add('preview-image');
-                pasteBox.appendChild(imgElement);
-            };
-
-            reader.readAsDataURL(blob);
-        }
-    }
-});
-
-// Display tasks
+// Function to display tasks (unchanged)
 function displayTasks(tasks) {
     const taskList = document.getElementById('task-list');
     taskList.innerHTML = '';
@@ -128,7 +111,7 @@ document.getElementById('task-form').addEventListener('submit', async function (
         status: 'inProgress'
     };
 
-    const docRef = await addDoc(tasksCollectionRef, newTask);
+    const docRef = await addDoc(collection(db, 'tasks'), newTask);
 
     tasks.push({ id: docRef.id, ...newTask });
 
