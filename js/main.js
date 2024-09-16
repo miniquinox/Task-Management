@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     mainContent.style.display = 'block';
 });
 
-// Function to display tasks (unchanged)
+// Function to display tasks
 function displayTasks(tasks) {
     const taskList = document.getElementById('task-list');
     taskList.innerHTML = '';
