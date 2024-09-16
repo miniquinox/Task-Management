@@ -21,6 +21,35 @@ const db = getFirestore(app);
 let tasks = [];
 let pastedImages = [];
 
+// Handle image paste events
+document.getElementById('paste-box').addEventListener('paste', function (e) {
+    const items = e.clipboardData.items;
+    const pasteBox = document.getElementById('paste-box');
+
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf('image') !== -1) {
+            const blob = items[i].getAsFile();
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                pastedImages.push(event.target.result);  // Save the base64 image
+
+                if (pasteBox.querySelector('p')) {
+                    pasteBox.querySelector('p').style.display = 'none';  // Hide the "Paste your image here" text
+                }
+
+                const imgElement = document.createElement('img');
+                imgElement.src = event.target.result;
+                imgElement.alt = "Pasted Image";
+                imgElement.classList.add('preview-image');
+                pasteBox.appendChild(imgElement);  // Display the pasted image
+            };
+
+            reader.readAsDataURL(blob);
+        }
+    }
+});
+
 // Load tasks from Firestore on page load
 document.addEventListener('DOMContentLoaded', async function () {
     const modal = document.getElementById('file-modal');
@@ -117,6 +146,7 @@ document.getElementById('task-form').addEventListener('submit', async function (
 
     displayTasks(tasks);
 
+    // Reset form and pasted images
     document.getElementById('task-form').reset();
     document.getElementById('paste-box').innerHTML = '<p>Paste your image here</p>';
     pastedImages = [];
