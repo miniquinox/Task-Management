@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Logger</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="apple-icon"></span> Task Logger</h1>
+        </header>
+
+        <!-- Modal to prompt the user -->
+        <div id="file-modal" class="modal">
+            <div class="modal-content">
+                <h2>Loading tasks...</h2>
+                <p>Please wait while we fetch your tasks from Firestore.</p>
+            </div>
+        </div>
+
+        <main style="display: none;"> <!-- Initially hidden -->
+            <section class="task-form">
+                <h2>Create New Task</h2>
+                <form id="task-form">
+                    <input type="text" id="task-name" class="wide-input" placeholder="Task Name" required>
+                    <textarea id="task-desc" class="wide-input" placeholder="Task Description" rows="4" required></textarea>
+                    
+                    <!-- Special paste area for images -->
+                    <div id="paste-box" class="paste-box">
+                        <p>Paste your image here</p>
+                    </div>
+                    
+                    <div class="button-container">
+                        <button type="submit" class="task-button">Add Task</button>
+                        <button id="save-tasks-btn" class="task-button">Save Tasks</button>
+                    </div>
+                </form>
+            </section>
+        
+            <section class="task-timeline">
+                <h2 class="center-text">Task Timeline</h2>
+                <div id="task-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC5xd72NZj54glH0nzoI9tJ_dPCaidLBqM",
+            authDomain: "task-manager-2025.firebaseapp.com",
+            projectId: "task-manager-2025",
+            storageBucket: "task-manager-2025.appspot.com",
+            messagingSenderId: "1015096573035",
+            appId: "1:1015096573035:web:35ed5a595b8bb4fef6452e",
+            measurementId: "G-PJEP0EFSZ3"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+    </script>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
