@@ -116,14 +116,19 @@ function displayTasks(tasks) {
                     <option value="complete" ${task.status === 'complete' ? 'selected' : ''}>Complete</option>
                     <option value="impossible" ${task.status === 'impossible' ? 'selected' : ''}>Impossible</option>
                 </select>
-                <button class="icon-btn icon-edit" onclick="editTask(${index})">&#9998;</button>
-                <button class="icon-btn icon-delete" onclick="deleteTask(${index})">&#128465;</button>
+                <button class="icon-btn icon-edit" onclick="window.editTask(${index})">&#9998;</button>
+                <button class="icon-btn icon-delete" onclick="window.deleteTask(${index})">&#128465;</button>
             </div>
         `;
 
         taskList.appendChild(taskItem);
     });
 }
+
+// Expose functions globally
+window.editTask = editTask;
+window.deleteTask = deleteTask;
+window.updateStatus = updateStatus;
 
 // Add new task
 document.getElementById('task-form').addEventListener('submit', async function (e) {
@@ -174,8 +179,8 @@ function editTask(index) {
                 <option value="complete" ${task.status === 'complete' ? 'selected' : ''}>Complete</option>
                 <option value="impossible" ${task.status === 'impossible' ? 'selected' : ''}>Impossible</option>
             </select>
-            <button class="icon-btn icon-edit" onclick="saveTask(${index})">&#10003;</button>
-            <button class="icon-btn icon-delete" onclick="deleteTask(${index})">&#128465;</button>
+            <button class="icon-btn icon-edit" onclick="window.saveTask(${index})">&#10003;</button>
+            <button class="icon-btn icon-delete" onclick="window.deleteTask(${index})">&#128465;</button>
         </div>
         ${task.images && task.images.length > 0 ? task.images.map(image => `<img src="${image}" alt="Task Image" class="preview-image">`).join('') : ''}
     `;
