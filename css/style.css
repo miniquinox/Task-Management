@@ -1,6 +1,6 @@
 /* Light Theme with ExamAi Purple */
 body {
-    background-color: #EFEFEF;  /* Light background color */
+    background-color: #ffffff;  /* Light background color */
     color: #333;  /* Darker text color for contrast */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 0;
@@ -50,7 +50,7 @@ input, textarea {
     margin-bottom: 10px;
     border: 1px solid #ccc;  /* Light border for inputs */
     border-radius: 6px;
-    background-color: #fff;
+    background-color: #EFEFEF;
     color: #333;
 }
 
@@ -66,7 +66,7 @@ input, textarea {
 button {
     padding: 10px;
     background-color: #6C4DFF; /* ExamAi purple for buttons */
-    color: #fff;
+    color: #EFEFEF;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -87,7 +87,7 @@ button:hover {
 }
 
 .task-item {
-    background-color: #fff;  /* White task items for light theme */
+    background-color: #EFEFEF;  /* White task items for light theme */
     padding: 20px;
     border-radius: 6px;
     width: 40%;
@@ -200,7 +200,7 @@ button:hover {
     border: 2px dashed #6C4DFF;  /* Purple dashed border */
     padding: 20px;
     text-align: center;
-    background-color: #fff;
+    background-color: #EFEFEF;
     border-radius: 6px;
     margin-bottom: 20px;
     height: 120px;
@@ -233,7 +233,7 @@ button:hover {
 /* Select boxes */
 select {
     padding: 5px;
-    background-color: #fff;
+    background-color: #EFEFEF;
     color: #333;
     border: 1px solid #6C4DFF;  /* Purple border */
     border-radius: 6px;
@@ -277,7 +277,7 @@ select:focus {
 }
 
 .modal-content {
-    background-color: #fff;
+    background-color: #EFEFEF;
     padding: 20px;
     border-radius: 8px;
     max-width: 400px;
@@ -337,7 +337,7 @@ select:focus {
     max-width: 100%;
     box-sizing: border-box;
     padding: 10px;
-    background-color: #fff;
+    background-color: #EFEFEF;
     border: 1px solid #6C4DFF;
     color: #333;
     border-radius: 6px;
