@@ -21,6 +21,47 @@ const db = getFirestore(app);
 let tasks = [];
 let pastedImages = [];
 
+// Function to resize images before uploading
+function resizeImage(file, maxWidth, maxHeight, callback) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const img = new Image();
+        img.src = event.target.result;
+
+        img.onload = function () {
+            let width = img.width;
+            let height = img.height;
+
+            // Calculate the aspect ratio
+            if (width > height) {
+                if (width > maxWidth) {
+                    height = Math.round(height * (maxWidth / width));
+                    width = maxWidth;
+                }
+            } else {
+                if (height > maxHeight) {
+                    width = Math.round(width * (maxHeight / height));
+                    height = maxHeight;
+                }
+            }
+
+            // Create a canvas and resize the image
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+
+            // Convert to JPEG and compress the image
+            const resizedImage = canvas.toDataURL('image/jpeg', 0.7); // 70% quality
+
+            // Return the resized image
+            callback(resizedImage);
+        };
+    };
+    reader.readAsDataURL(file);
+}
+
 // Handle image paste events
 document.getElementById('paste-box').addEventListener('paste', function (e) {
     const items = e.clipboardData.items;
@@ -29,23 +70,21 @@ document.getElementById('paste-box').addEventListener('paste', function (e) {
     for (let i = 0; i < items.length; i++) {
         if (items[i].type.indexOf('image') !== -1) {
             const blob = items[i].getAsFile();
-            const reader = new FileReader();
 
-            reader.onload = function (event) {
-                pastedImages.push(event.target.result);  // Save the base64 image
+            // Resize the image before saving and displaying
+            resizeImage(blob, 800, 600, function (resizedImage) {
+                pastedImages.push(resizedImage);  // Save the resized image
 
                 if (pasteBox.querySelector('p')) {
                     pasteBox.querySelector('p').style.display = 'none';  // Hide the "Paste your image here" text
                 }
 
                 const imgElement = document.createElement('img');
-                imgElement.src = event.target.result;
+                imgElement.src = resizedImage;
                 imgElement.alt = "Pasted Image";
                 imgElement.classList.add('preview-image');
-                pasteBox.appendChild(imgElement);  // Display the pasted image
-            };
-
-            reader.readAsDataURL(blob);
+                pasteBox.appendChild(imgElement);  // Display the resized image in the paste box
+            });
         }
     }
 });
@@ -111,7 +150,7 @@ function displayTasks(tasks) {
             <p>${task.description}</p>
             ${imagesHtml}
             <div class="action-buttons">
-                <select id="status-select-${index}" style="border-color: ${statusColor};" onchange="updateStatus(${index}, this.value)">
+                <select id="status-select-${index}" style="border-color: ${statusColor};" onchange="window.updateStatus(${index}, this.value)">
                     <option value="inProgress" ${task.status === 'inProgress' ? 'selected' : ''}>In Progress</option>
                     <option value="complete" ${task.status === 'complete' ? 'selected' : ''}>Complete</option>
                     <option value="impossible" ${task.status === 'impossible' ? 'selected' : ''}>Impossible</option>
