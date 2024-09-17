@@ -48,7 +48,7 @@ input, textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;  /* Light border for inputs */
+    border: 1px solid #dcdcdc;  /* Light border for inputs */
     border-radius: 6px;
     background-color: #f7f7f7;
     color: #333;
@@ -200,7 +200,7 @@ button:hover {
     border: 2px dashed #6C4DFF;  /* Purple dashed border */
     padding: 20px;
     text-align: center;
-    background-color: #696969;
+    background-color: #dcdcdc;
     border-radius: 6px;
     margin-bottom: 20px;
     height: 120px;
@@ -337,7 +337,7 @@ select:focus {
     max-width: 100%;
     box-sizing: border-box;
     padding: 10px;
-    background-color: #222222;
+    background-color: #f7f7f7;
     border: 1px solid #6C4DFF;
     color: #333;
     border-radius: 6px;
