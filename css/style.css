@@ -50,7 +50,7 @@ input, textarea {
     margin-bottom: 10px;
     border: 1px solid #ccc;  /* Light border for inputs */
     border-radius: 6px;
-    background-color: #f4f4f4;
+    background-color: #f7f7f7;
     color: #333;
 }
 
@@ -66,7 +66,7 @@ input, textarea {
 button {
     padding: 10px;
     background-color: #6C4DFF; /* ExamAi purple for buttons */
-    color: #EFEFEF;
+    color: #f7f7f7;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -87,7 +87,7 @@ button:hover {
 }
 
 .task-item {
-    background-color: #f4f4f4;  /* White task items for light theme */
+    background-color: #f7f7f7;  /* White task items for light theme */
     padding: 20px;
     border-radius: 6px;
     width: 40%;
@@ -200,7 +200,7 @@ button:hover {
     border: 2px dashed #6C4DFF;  /* Purple dashed border */
     padding: 20px;
     text-align: center;
-    background-color: #EFEFEF;
+    background-color: #696969;
     border-radius: 6px;
     margin-bottom: 20px;
     height: 120px;
@@ -233,7 +233,7 @@ button:hover {
 /* Select boxes */
 select {
     padding: 5px;
-    background-color: #f4f4f4;
+    background-color: #f7f7f7;
     color: #333;
     border: 1px solid #6C4DFF;  /* Purple border */
     border-radius: 6px;
@@ -277,7 +277,7 @@ select:focus {
 }
 
 .modal-content {
-    background-color: #f4f4f4;
+    background-color: #bfbfbf;
     padding: 20px;
     border-radius: 8px;
     max-width: 400px;
@@ -337,7 +337,7 @@ select:focus {
     max-width: 100%;
     box-sizing: border-box;
     padding: 10px;
-    background-color: #EFEFEF;
+    background-color: #222222;
     border: 1px solid #6C4DFF;
     color: #333;
     border-radius: 6px;
