@@ -54,6 +54,15 @@ input, textarea {
     color: #333;
 }
 
+/* Responsive input fields */
+@media screen and (max-width: 950px) {
+    .task-form {
+        width: 80%;  /* Use 80% of the screen width */
+        margin: 0 auto;  /* Center the form */
+    }
+}
+
+/* Button styling */
 button {
     padding: 10px;
     background-color: #6C4DFF; /* ExamAi purple for buttons */
@@ -279,6 +288,14 @@ select:focus {
 
 .wide-input {
     width: 935px;
+}
+
+/* For smaller screens, make the form responsive */
+@media screen and (max-width: 950px) {
+    .wide-input {
+        width: 80%;  /* Inputs will take up 80% of the screen width */
+        margin-left: 10%;  /* Center the input */
+    }
 }
 
 .task-item .action-buttons {
