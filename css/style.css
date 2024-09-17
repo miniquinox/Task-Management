@@ -50,7 +50,7 @@ input, textarea {
     margin-bottom: 10px;
     border: 1px solid #ccc;  /* Light border for inputs */
     border-radius: 6px;
-    background-color: #EFEFEF;
+    background-color: #f4f4f4;
     color: #333;
 }
 
@@ -87,7 +87,7 @@ button:hover {
 }
 
 .task-item {
-    background-color: #EFEFEF;  /* White task items for light theme */
+    background-color: #f4f4f4;  /* White task items for light theme */
     padding: 20px;
     border-radius: 6px;
     width: 40%;
@@ -233,7 +233,7 @@ button:hover {
 /* Select boxes */
 select {
     padding: 5px;
-    background-color: #EFEFEF;
+    background-color: #f4f4f4;
     color: #333;
     border: 1px solid #6C4DFF;  /* Purple border */
     border-radius: 6px;
@@ -277,7 +277,7 @@ select:focus {
 }
 
 .modal-content {
-    background-color: #EFEFEF;
+    background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
     max-width: 400px;
