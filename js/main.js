@@ -129,6 +129,7 @@ function displayTasks(tasks) {
 window.editTask = editTask;
 window.deleteTask = deleteTask;
 window.updateStatus = updateStatus;
+window.saveTask = saveTask;  // <-- Exposing saveTask to the window object
 
 // Add new task
 document.getElementById('task-form').addEventListener('submit', async function (e) {
